@@ -3,7 +3,7 @@ const { PrismaConfig } = require('../config');
 class DashboardRepository {
 
   async getAdminStats() {
-        const [totalUsers, totalStores, totalRatings] = await PrismaConfig.$transaction([
+        const [totalUsers, totalStores, totalRatings] = await Promise.all([
             PrismaConfig.user.count(),
             PrismaConfig.store.count(),
             PrismaConfig.rating.count(),

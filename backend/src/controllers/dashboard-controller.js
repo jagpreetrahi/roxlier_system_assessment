@@ -1,15 +1,16 @@
 const { StatusCodes } = require('http-status-codes');
 const { SuccessResponse, ErrorResponse } = require('../utils/common');
-const {DashboardService} = require('../services');
+const { DashBoardService } = require('../services');
 
 const getAdminStats = async (req, res) => {
   try {
-    const stats = await DashboardService.getAdminStats();
-
+    const stats = await DashBoardService.getAdminStats();
     SuccessResponse.message = 'Admin stats fetched successfully';
     SuccessResponse.data    = stats;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
+    console.log('DASHBOARD ERROR:', error.message); // ← add this
+    console.log('FULL ERROR:', error);  
     ErrorResponse.message = 'Failed to fetch admin stats';
     ErrorResponse.error   = error;
     return res

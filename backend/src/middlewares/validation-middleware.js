@@ -5,10 +5,8 @@ const AppError = require('../utils/errors/app-error');
 
 const registerSchema = z.object({
   name: z
-    .string({ required_error: 'Name is required' })
-    .min(10, 'Name must be at least 20 characters')
-    .max(60, 'Name must not exceed 60 characters'),
-
+    .string({ required_error: 'Name is required' }),
+  
   email: z
     .string({ required_error: 'Email is required' })
     .email('Email must be a valid email address'),
@@ -17,8 +15,8 @@ const registerSchema = z.object({
     .string({ required_error: 'Password is required' })
     .min(8, 'Password must be at least 8 characters')
     .max(16, 'Password must not exceed 16 characters')
-    .regex(/(?=.*[A-Z])/, 'Password must contain at least one uppercase letter')
-    .regex(/(?=.*[!@#$%^&*])/, 'Password must contain at least one special character'),
+    .regex(/(?=.*[A-Z])/, 'Password must contain at least one uppercase letter'),
+    
 
   address: z
     .string({ required_error: 'Address is required' })
@@ -36,10 +34,8 @@ const loginSchema = z.object({
 
 const createUserSchema = z.object({
   name: z
-    .string({ required_error: 'Name is required' })
-    .min(10, 'Name must be at least 20 characters')
-    .max(60, 'Name must not exceed 60 characters'),
-
+    .string({ required_error: 'Name is required' }),
+  
   email: z
     .string({ required_error: 'Email is required' })
     .email('Email must be a valid email address'),
@@ -48,8 +44,7 @@ const createUserSchema = z.object({
     .string({ required_error: 'Password is required' })
     .min(8, 'Password must be at least 8 characters')
     .max(16, 'Password must not exceed 16 characters')
-    .regex(/(?=.*[A-Z])/, 'Password must contain at least one uppercase letter')
-    .regex(/(?=.*[!@#$%^&*])/, 'Password must contain at least one special character'),
+    .regex(/(?=.*[A-Z])/, 'Password must contain at least one uppercase letter'),
 
   address: z
     .string({ required_error: 'Address is required' })
@@ -71,17 +66,15 @@ const updatePasswordSchema = z.object({
     .min(8, 'New password must be at least 8 characters')
     .max(16, 'New password must not exceed 16 characters')
     .regex(/(?=.*[A-Z])/, 'New password must contain at least one uppercase letter')
-    .regex(/(?=.*[!@#$%^&*])/, 'New password must contain at least one special character')
+    
 }).refine(data => data.currentPassword !== data.newPassword, {
-       message: 'New password must be different from current password',
-       path: ['newPassword']
+      message: 'New password must be different from current password',
+      path: ['newPassword']
 });
 
 const createStoreSchema = z.object({
   name: z
-    .string({ required_error: 'Store name is required' })
-    .min(10, 'Store name must be at least 20 characters')
-    .max(60, 'Store name must not exceed 60 characters'),
+    .string({ required_error: 'Store name is required' }),
 
   email: z
     .string({ required_error: 'Store email is required' })
@@ -121,8 +114,6 @@ const validate = (schema) => {
     }
 
     req.body = result.data;
-    
-
     next();
   };
 };

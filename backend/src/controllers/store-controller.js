@@ -49,7 +49,6 @@ const getStoreById = async (req, res) => {
     const store = await StoreService.getStoreById(
       req.params.id,
       req.user.id
-      
     );
 
     SuccessResponse.message = 'Store fetched successfully';

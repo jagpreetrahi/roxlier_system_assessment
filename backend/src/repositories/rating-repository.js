@@ -35,13 +35,12 @@ class RatingRepository extends CrudRepository {
             select: {
                 id: true,
                 rating: true,
-            
                 user: {
-                select: {
-                    id: true,
-                    name: true,
-                    email: true,
-                }
+                    select: {
+                        id: true,
+                        name: true,
+                        email: true,
+                    }
                 }
            },
            orderBy: { createdAt: 'desc' }
