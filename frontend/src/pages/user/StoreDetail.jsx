@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/NavBar';
 import StarRating from '../../components/StarRating';
 import API from '../../api/axios';
 import { IoMdStar } from 'react-icons/io';
