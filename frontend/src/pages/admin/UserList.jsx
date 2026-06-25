@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/NavBar';
 import SortableTable from '../../components/SortableTable';
 import API from '../../api/axios';
 

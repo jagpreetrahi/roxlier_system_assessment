@@ -1,7 +1,7 @@
 // src/pages/shared/UpdatePassword.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/NavBar';
 import API from '../../api/axios';
 
 const UpdatePassword = () => {
