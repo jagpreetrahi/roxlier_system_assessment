@@ -4,7 +4,7 @@ import SortableTable from '../../components/SortableTable';
 import API from '../../api/axios';
 import { IoMdSad } from 'react-icons/io';
 
-const OwnerDashboard = () => {
+const OwnerDashBoard = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error,   setError]   = useState('');
@@ -114,4 +114,4 @@ const OwnerDashboard = () => {
   );
 };
 
-export default OwnerDashboard;
+export default OwnerDashBoard;

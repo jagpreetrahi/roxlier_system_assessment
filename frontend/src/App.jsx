@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import UpdatePassword from './pages/shared/UpdatePassword';
+import UpdatePassword from './pages/shared/updatePassword';
 
 // Auth
 import Login    from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
 // Admin
-import AdminDashboard from './pages/admin/Dashboard';
+import AdminDashboard from './pages/admin/DashBoard';
 import UsersList      from './pages/admin/UserList';
 import UserDetail     from './pages/admin/UserDetail';
 import AddUser        from './pages/admin/AddUser';
@@ -20,7 +20,7 @@ import UserStores  from './pages/user/StoreList';
 import StoreDetail from './pages/user/StoreDetail';
 
 // Store Owner
-import OwnerDashboard from './pages/storeowner/Dashboard';
+import OwnerDashboard from './pages/storeOwner/DashBoard';
 
 const RoleRedirect = () => {
   const { user } = useAuth();
