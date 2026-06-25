@@ -6,7 +6,7 @@ const AppError = require('../utils/errors/app-error');
 const registerSchema = z.object({
   name: z
     .string({ required_error: 'Name is required' })
-    .min(20, 'Name must be at least 20 characters')
+    .min(10, 'Name must be at least 20 characters')
     .max(60, 'Name must not exceed 60 characters'),
 
   email: z
@@ -37,7 +37,7 @@ const loginSchema = z.object({
 const createUserSchema = z.object({
   name: z
     .string({ required_error: 'Name is required' })
-    .min(20, 'Name must be at least 20 characters')
+    .min(10, 'Name must be at least 20 characters')
     .max(60, 'Name must not exceed 60 characters'),
 
   email: z
@@ -80,7 +80,7 @@ const updatePasswordSchema = z.object({
 const createStoreSchema = z.object({
   name: z
     .string({ required_error: 'Store name is required' })
-    .min(20, 'Store name must be at least 20 characters')
+    .min(10, 'Store name must be at least 20 characters')
     .max(60, 'Store name must not exceed 60 characters'),
 
   email: z
@@ -112,8 +112,9 @@ const ratingSchema = z.object({
 const validate = (schema) => {
   return (req, res, next) => {
     const result = schema.safeParse(req.body);
+    console.log("the result is ", result)
     if (!result.success) {
-      const errors = result.error.errors.map(err => err.message);
+      const errors = result.error.errors?.map(err => err.message);
       ErrorResponse.message = 'Validation failed';
       ErrorResponse.error   = new AppError(errors, StatusCodes.BAD_REQUEST);
       return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
